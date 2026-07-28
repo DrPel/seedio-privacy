@@ -1,31 +1,19 @@
 # Seedio Privacy
 
 Seedio 的公开中英双语隐私政策页面，供 TestFlight 审核员和内测用户访问。
-页面不包含登录、数据库、用户追踪或表单提交能力。
+页面不包含登录、数据库、用户追踪、表单提交或第三方运行依赖。
 
-## Prerequisites
+## 结构
 
-- Node.js `>=22.13.0`
+- `index.html`: 隐私政策正文和元数据。
+- `privacy.css`: 响应式样式。
+- `.nojekyll`: GitHub Pages 静态发布标记。
+- `tests/privacy-page.test.mjs`: 隐私合同和站点结构测试。
 
-## Quick Start
+## 验证
 
 ```bash
-npm install
-npm run dev
-npm run build
+node --test tests/privacy-page.test.mjs
 ```
 
-This starter does not use `wrangler.jsonc`.
-
-## Included Shape
-
-- `app/page.tsx`: 隐私政策正文。
-- `app/layout.tsx`: 页面元数据和语言。
-- `app/globals.css`: 响应式样式。
-- `.openai/hosting.json`: Sites 项目标识。
-
-## Useful Commands
-
-- `npm run dev`: start local development
-- `npm run build`: verify the vinext build output
-- `npm test`: 构建并验证隐私政策关键内容。
+`main` 分支根目录由 GitHub Pages 直接发布，不需要构建步骤。
