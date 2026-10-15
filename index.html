@@ -1,5 +1,5 @@
 <!--
-  [INPUT]: 依赖 Seedio 当前内测的数据边界与 privacy.css
+  [INPUT]: 依赖 Seedio 国内外内测的数据处理、异步领取、推送与可选诊断边界与 privacy.css
   [OUTPUT]: 对外提供公开的中英双语 Seedio 隐私政策页面
   [POS]: privacy-site 的唯一公开页面，供 TestFlight 审核员和用户访问
   [PROTOCOL]: 变更时更新此头部，然后检查 AGENTS.md
@@ -23,7 +23,7 @@
         <p class="intro">
           这是 Seedio 内测版本的隐私说明。我们尽量只使用完成核心体验所需的数据。
         </p>
-        <p class="updated">更新日期：2026 年 7 月 28 日</p>
+        <p class="updated">更新日期：2026 年 10 月 15 日</p>
       </header>
 
       <section class="policy" aria-label="隐私政策正文">
@@ -31,7 +31,7 @@
           <p class="section-index" lang="en">Data we process</p>
           <h2>我们处理什么</h2>
           <p>
-            当你主动使用对应功能时，Seedio 会处理你输入或录制后转写的家庭情境、你选择的照片、家庭档案、本周重点、收藏内容和生成作品。这些信息只用于提供你请求的生成、保存和恢复体验。
+            当你主动使用对应功能时，Seedio 会处理你输入或录制后转写的家庭情境、你选择的照片、家庭档案、本周重点、收藏内容和生成作品。这些信息用于提供内容生成、推荐、保存和恢复体验；启用相关功能后，App 可能根据已有家庭资料自动生成推荐和学习画像。
           </p>
         </article>
 
@@ -49,6 +49,27 @@
           <p>
             当你请求生成内容时，本次输入以及你主动选择的照片会通过 Seedio 的生产后端发送给配置的 AI 服务。录音转文字使用 Apple 系统语音识别；Seedio 不把原始录音上传到自己的后端。语音播放可能使用系统语音或配置的远程语音服务。
           </p>
+        </article>
+
+        <article>
+          <p class="section-index" lang="en">Regions and background tasks</p>
+          <h2>服务地区、异步任务与通知</h2>
+          <p>App 根据 App Store 商店地区选择服务：中国大陆使用阿里云后端，其他已支持地区使用 Cloudflare 海外后端。已提交任务继续由原地区处理，不因切换语言或地区转移。生成服务包括阿里云百炼；部分语音功能使用小米 MiMo 等已配置服务，服务商可能在其运营地区处理相关输入。请勿提交你无权提供的第三方个人信息。</p>
+          <p>为在 App 切后台或关闭后完成推荐并恢复领取，我们在对应地区的私有存储中保存任务输入、结果及随机领取凭证。任务七天后不可再领取，存储按七天生命周期清理，物理删除取决于云平台调度。允许通知后，任务可以附带 Apple 推送令牌，由 Apple Push Notification service 发送完成提示；通知不包含家庭情境或生成正文。你可在系统设置中关闭通知。</p>
+        </article>
+
+        <article>
+          <p class="section-index" lang="en">Optional diagnostics</p>
+          <h2>可选故障诊断</h2>
+          <p>“分享故障诊断”默认关闭，可在设置中自愿开启或随时关闭；是否开启不影响生成。仅在推荐和画像生成期间记录随机请求编号、前后台状态、时间、耗时、App 版本及固定错误类别，不包含家庭正文、照片、孩子资料、推送令牌或长期设备标识，不用于广告或跨应用追踪。请求编号可关联该次服务端请求，因此这些记录并非完全匿名。</p>
+          <p>待上传记录保存在本机并排除备份，有效期七天，App 运行时清理过期项；联网且回到前台后发送至原生成服务所在地区的 Seedio 后端。诊断日志按接收后七天保留，仅限维护人员用于故障排查。云平台也可能为安全和网络运行处理 IP 等技术信息，这不属于上述诊断正文。</p>
+          <p>关闭会清除待上传记录并取消上传，无法撤回已经接收的记录；已接收记录按保留期删除，也可通过下方邮箱申请删除，并提供故障时间或请求编号等必要定位信息。</p>
+        </article>
+
+        <article>
+          <p class="section-index" lang="en">Subscriptions</p>
+          <h2>订阅服务</h2>
+          <p>打开会员页后，RevenueCat 使用匿名应用用户标识、购买记录和设备信息验证订阅并恢复购买。家庭资料、照片与学习内容不会发送给 RevenueCat。</p>
         </article>
 
         <article>
@@ -90,6 +111,11 @@
           Seedio backend. Camera, photo, microphone, and speech permissions are
           requested only when you use the related feature.
         </p>
+        <p>When enabled, recommendations and learning profiles may be generated automatically from information already in the app. Mainland China storefronts use our Alibaba Cloud backend; other supported storefronts use our Cloudflare overseas backend. Existing tasks remain in their original region. Configured AI and voice services include Alibaba Cloud Model Studio and Xiaomi MiMo; service providers may process relevant inputs in their operating regions.</p>
+        <p>Private regional storage holds asynchronous task inputs, results and random claim credentials so you can retrieve a result after leaving the app. Retrieval expires after seven days. A seven-day storage lifecycle schedules deletion; physical removal depends on the cloud platform. If you allow notifications, a task may include an Apple push token for a completion notification through Apple Push Notification service. Notifications do not include family content or generated text. You can disable notifications in system settings.</p>
+        <p>Optional fault diagnostics are off by default. If enabled in Settings, they record random request IDs, app foreground/background states, timestamps, duration, app version and fixed error categories during recommendation and profile generation. They exclude family content, photos, child information, push tokens and persistent device identifiers. Request IDs can be linked to the corresponding server request, so records are not fully anonymous. They are not used for advertising or cross-app tracking.</p>
+        <p>Pending diagnostics are excluded from backups and expire after seven days; the app cleans expired pending data while running. Uploads go to the original generation region when the app is online and in the foreground. Received diagnostic logs have seven-day retention and are limited to maintainers for troubleshooting. Cloud providers may also process technical information such as IP addresses for network operations and security. Turning diagnostics off clears pending data and cancels uploads, but cannot recall received records. You may request deletion using the contact below and provide the minimum information needed to locate the issue.</p>
+        <p>When you open the membership page, RevenueCat processes an anonymous app user identifier, purchase history and device information to validate or restore subscriptions. Family information, photos and learning content are not sent to RevenueCat.</p>
         <p>
           For privacy questions, contact
           <a href="mailto:doctor.peeel@gmail.com">doctor.peeel@gmail.com</a>.
